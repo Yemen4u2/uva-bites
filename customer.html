@@ -18,27 +18,10 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
+					<h1><a href="index.html">UVA Bites</a> by Thunder Squad</h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 							<li><a href="#" class="button">Sign Up</a></li>
 						</ul>
 					</nav>
@@ -51,24 +34,84 @@
 					</header>
 					<div class="box">
 						<form method="post" action="search.php" method="get">
-<!-- 							<div class="row uniform 50%">
-								<div class="6u 12u(mobilep)">
-									<input type="text" name="name" id="name" value="" placeholder="Resturant Name" />
-								</div>
-								<div class="6u 12u(mobilep)">
-									<input type="text" name="text" id="text" value="" placeholder="Food" />
-								</div>
-							</div> -->
 							<div class="row uniform 50%">
 								<div class="12u">
-									<input type="text" name="resturantName" id="resturantName" value="" placeholder="Resturant Name" />
+									<input type="text" name="restaurantName" id="restaurantName" value="" placeholder="Restaurant" />
 								</div>
 							</div>
-<!-- 							<div class="row uniform 50%">
+
+							<div class="row uniform 50%">
 								<div class="12u">
-									<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+									<input type="text" name="foodName" id="foodName" value="" placeholder="Food" />
 								</div>
-							</div> -->
+							</div>
+
+							<div class="row uniform 50%">
+								<div class="12u">
+									<input type="text" name="zip" id="zip" value="" placeholder="Zip Code" />
+								</div>
+							</div>
+
+							<br>
+
+							<center><h3>Parking</h3></center>
+
+							<center>
+							<div class="row uniform 50%">
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="streetParking" name="streetParking">
+									<label for="streetParking">Street</label>
+								</div>
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="garageParking" name="garageParking">
+									<label for="garageParking">Garage</label>
+								</div>
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="freeParking" name="freeParking">
+									<label for="freeParking">Free</label>
+								</div>
+							</div>
+							</center>
+
+							<br>
+
+							<center><h3>Dining</h3></center>
+
+							<center>
+							<div class="row uniform 50%">
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="dinein" name="dinein">
+									<label for="dineIn">Sit-In</label>
+								</div>
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="delivery" name="delivery">
+									<label for="delivery">Delivery</label>
+								</div>
+								<div class="4u 12u(narrower)">
+									<input type="checkbox" id="carryout" name="carryout">
+									<label for="carryout">Carry-Out</label>
+								</div>
+							</div>
+							</center>
+
+							<br>
+
+							<center><h3>Rating</h3></center>
+
+							<div class="row uniform 50%">
+								<div class="12u">
+									<div class="select-wrapper">
+										<select name="category" id="category">
+										  <option value="oneStar">1 Stars</option>
+										  <option value="twoStar">2 Stars</option>
+										  <option value="threeStar">3 Stars</option>
+										  <option value="fourStar">4 Stars</option>
+										  <option value="fiveStart">5 Stars</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
 							<div class="row uniform">
 								<div class="12u">
 									<ul class="actions align-center">

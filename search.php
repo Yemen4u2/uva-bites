@@ -1,8 +1,8 @@
 <?php
       $servername = "stardock.cs.virginia.edu";
-      $username = "cs4750sma3em";
-      $password = "TheOrder5";
-      $database = "cs4750sma3em";
+      $username = "cs4750jgd3hb";
+      $password = "p@ssw0rd";
+      $database = "cs4750jgd3hb";
 
       // Create connection
       $conn = new mysqli($servername, $username, $password);
