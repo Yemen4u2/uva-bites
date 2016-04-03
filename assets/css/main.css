@@ -3059,6 +3059,16 @@
 			margin-bottom: 1.75em;
 		}
 
+		#banner input[type="text"],
+		#banner input[type="email"] {
+			background-color: #fff;
+			box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+			color: #fff;
+			width: 35em;
+			height: 2.5em;
+			margin: 15px;
+		}
+
 		#banner input[type="submit"],
 		#banner input[type="reset"],
 		#banner input[type="button"],
