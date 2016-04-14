@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Contact - Alpha by HTML5 UP</title>
+		<title>UVA Bites</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -33,7 +33,7 @@
 						<h2>What are you in the mood for?</h2>
 					</header>
 					<div class="box">
-						<form method="post" action="search.php" method="get">
+						<form action="search.php" method="get">
 							<div class="row uniform 50%">
 								<div class="12u">
 									<input type="text" name="restaurantName" id="restaurantName" value="" placeholder="Restaurant" />
@@ -58,17 +58,17 @@
 
 							<center>
 							<div class="row uniform 50%">
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="streetParking" name="streetParking">
-									<label for="streetParking">Street</label>
-								</div>
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="garageParking" name="garageParking">
-									<label for="garageParking">Garage</label>
-								</div>
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="freeParking" name="freeParking">
-									<label for="freeParking">Free</label>
+								<div class="12u">
+									<div class="select-wrapper">
+
+										<select required name="parkingOption" id="parkingOption">
+										  <option value="">Select Parking Option</option>
+										  <option value="ParkingLot">Parking Lot</option>
+										  <option value="StreetParking">Street Parking</option>
+										  <option value="Garage">Parking Garage</option>
+										</select>
+
+									</div>
 								</div>
 							</div>
 							</center>
@@ -77,22 +77,19 @@
 
 							<center><h3>Dining</h3></center>
 
-							<center>
 							<div class="row uniform 50%">
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="dinein" name="dinein">
-									<label for="dineIn">Sit-In</label>
-								</div>
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="delivery" name="delivery">
-									<label for="delivery">Delivery</label>
-								</div>
-								<div class="4u 12u(narrower)">
-									<input type="checkbox" id="carryout" name="carryout">
-									<label for="carryout">Carry-Out</label>
+								<div class="12u">
+									<div class="select-wrapper">
+										<select required name="diningOption" id="diningOption">
+										<option value="">Select Dining Option</option>
+										  <option value="sitin">Sit-In</option>
+										  <option value="delivery">Delivery</option>
+										  <option value="carryout">Carry Out</option>
+										  <option value="reservation">Reservation</option>
+										</select>
+									</div>
 								</div>
 							</div>
-							</center>
 
 							<br>
 
@@ -101,12 +98,13 @@
 							<div class="row uniform 50%">
 								<div class="12u">
 									<div class="select-wrapper">
-										<select name="category" id="category">
-										  <option value="oneStar">1 Stars</option>
-										  <option value="twoStar">2 Stars</option>
-										  <option value="threeStar">3 Stars</option>
-										  <option value="fourStar">4 Stars</option>
-										  <option value="fiveStart">5 Stars</option>
+										<select name="rating" id="rating">
+										<option value="000" selected="selected">Select Resaurant Rating</option>
+										  <option value="1">1 Stars</option>
+										  <option value="2">2 Stars</option>
+										  <option value="3">3 Stars</option>
+										  <option value="4">4 Stars</option>
+										  <option value="5">5 Stars</option>
 										</select>
 									</div>
 								</div>
