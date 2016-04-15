@@ -1,4 +1,5 @@
 <?php
+
       $servername = "stardock.cs.virginia.edu";
       $username = "cs4750jgd3hb";
       $password = "p@ssw0rd";
@@ -21,31 +22,44 @@
 
       if(isSet($_GET["restaurantName"]) && $_GET["restaurantName"] != "")
       {
-      	$restaurantName = $_GET["restaurantName"];
+      	$restaurantName = InputCleaner($_GET["restaurantName"]);
       }
       if (isSet($_GET["foodName"]) && $_GET["foodName"] != "")
       {
-      	$foodName = $_GET["foodName"];
+      	$foodName = InputCleaner($_GET["foodName"]);
       }
       if (isSet($_GET["zip"]) && $_GET["zip"] != "")
       {
-      	$zipCode = $_GET["zip"];
+      	$zipCode = InputCleaner($_GET["zip"]);
       }
       if (isSet($_GET["parkingOption"]) && $_GET["parkingOption"] != "")
       {
-      	$parkingOption = $_GET["parkingOption"];
+      	$parkingOption = InputCleaner($_GET["parkingOption"]);
       }
       if (isSet($_GET["diningOption"]) && $_GET["diningOption"] != "")
       {
-      	$diningOption = $_GET["diningOption"];
+      	$diningOption = InputCleaner($_GET["diningOption"]);
       }
       if (isSet($_GET["rating"]) && $_GET["rating"] != "")
       {
-      	$rating = $_GET["rating"];
+      	$rating = InputCleaner($_GET["rating"]);
       }
 
 
-      //Check if just a restaurant name has been set
+    //This is the function used to SANITIZE the values that are inputed.
+
+	function InputCleaner($data)
+	{
+		//remove space bfore and after
+		$data = trim($data); 
+		//remove slashes
+		$data = stripslashes($data); 
+		$data=(filter_var($data, FILTER_SANITIZE_STRING));
+		return $data;
+	}
+
+
+    //Check if just a restaurant name has been set
 
     if (isSet($restaurantName)) 
     {
