@@ -15,19 +15,111 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
+						<li><a href="adminLogin.html">Sign In</a></li>
 					</ul>
 				</nav>		
 			</header>
 		
 			<section id="banner">
-				<center>
+			<center>
+					<h2>Sign Up</h2>
 					<form action="signUp.php" method="POST" style="width: 50%">
-						<h2>Sign Up</h2>
+						<div class="9u 12u(mobilep)">
 						<input type="text" name="userName" placeholder="User Name" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
 						<input type="text" name="password" placeholder="Password" required>
+						</div>
+						<br>
+
+						<h3>Restaurant Information</h3>
+
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="restaurant" placeholder="Restaurant Name" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="streetName" placeholder="Street Address" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="zipCode" placeholder="Zip Code" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="cusine" placeholder="Cusine" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="waitTime" placeholder="Average Wait Time" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="rating" placeholder="Average Rating" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="cost" placeholder="Average Cost" required>
+						</div>
+						<br>
+						<h3>Contact Information</h3>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="contactNumber" placeholder="Phone Number" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
+						<input type="text" name="contactEmail" placeholder="Email Address" required>
+						</div>
+						<br>
+						<h3>Dining Options</h3>
+						<section class="box">
+						<div class="row uniform 50%">
+							<div class="3u 12u(narrower)">
+								<input type="checkbox" id="sitIn" name="sitIn" value="1">
+								<label for="sitIn">Sit In</label>
+							</div>
+							<div class="3u 12u(narrower)">
+								<input type="checkbox" id="delivery" name="delivery" value="1">
+								<label for="delivery">Delivery</label>
+							</div>
+							<div class="3u 12u(narrower)">
+								<input type="checkbox" id="carryout" name="carryout" value="1">
+								<label for="carryout">Carryout</label>
+							</div>
+							<div class="3u 12u(narrower)">
+								<input type="checkbox" id="reservation" name="reservation" value="1">
+								<label for="reservation">Reservation</label>
+							</div>
+						</div>
+						</section>
+						<h3>Parking Options</h3>
+						<section class="box">
+						<div class="row uniform 50%">
+							<div class="4u 12u(narrower)">
+								<input type="checkbox" id="parkingLot" name="parkingLot" value="1">
+								<label for="parkingLot">Parking Lot</label>
+							</div>
+							<div class="4u 12u(narrower)">
+								<input type="checkbox" id="streetParking" name="streetParking" value="1">
+								<label for="streetParking">Street Parking</label>
+							</div>
+							<div class="4u 12u(narrower)">
+								<input type="checkbox" id="garageParking" name="garageParking" value="1">
+								<label for="garageParking">Garage Parking</label>
+							</div>
+							<br>
+						</div>
+						</section>
+						<div class="9u 12u(mobilep)">
+							<input type="text" name="parkingCost" placeholder="Parking Cost" required>
+						</div>
+						<br>
+						<div class="9u 12u(mobilep)">
 						<input type="submit" value="Submit">
+						</div>
 					</form>
-				</center>
+			</center>
 			</section>
 		</div>
 </body>
