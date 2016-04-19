@@ -143,13 +143,24 @@
 						<?php
 						  	echo "$ContactOutput";
 						?>
-<!-- 						<div class="row uniform">
+ 						<div class="row uniform">
 							<div class="12u">
+							<form action="updateContact.php" method="POST">
+								<input type="hidden" name="restaurantID" value="<?php echo $restaurantID; ?>">
 								<ul class="actions">
-								<li><input type="submit" value="Update Contact Information" /></li>
+									<li><input type="text" name="newPhoneNumber" placeholder="Phone Number"></li>
+									<li><input type="text" name="newEmailAddress" placeholder="Email Address"></li>
 								</ul>
+								<ul class="actions">
+									<li><input type="text" name="newStreetAddress" placeholder="Street Address"></li>
+									<li><input type="text" name="newZipCode" placeholder="Zip Code"></li>
+								</ul>
+								<ul class="actions">
+									<li><input type="submit" value="Update Contact Information" /></li>
+								</ul>
+							</form>
 							</div>
-						</div> -->
+						</div>
 						</div>
 						<h2>Restaurant Menu</h2>
 						<div class="box">
