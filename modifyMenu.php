@@ -6,8 +6,8 @@
 	//Setting up Connection to the database.
 
 	$servername = "stardock.cs.virginia.edu";
-	$username = "cs4750jgd3hb";
-	$password = "p@ssw0rd";
+	$username = "cs4750jgd3hbb";
+	$password = "spring2016";
 	$database = "cs4750jgd3hb";
 
 	// Create connection
@@ -22,7 +22,7 @@
 	}
 	else if(isSet($_POST['removeItem']))
 	{
-		$RemoveFromMenu = "DELETE FROM Menu WHERE restaurantID = '$restaurantID' && foodID = $foodItem";
+		$RemoveFromMenu = "DELETE FROM cs4750jgd3hb.Menu WHERE restaurantID = '$restaurantID' AND foodID = '$foodItem'";
 		mysqli_query($conn, $RemoveFromMenu);
 	}
 

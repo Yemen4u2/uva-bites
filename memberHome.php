@@ -10,8 +10,8 @@
 	//Setting up Connection to the database.
 
 	$servername = "stardock.cs.virginia.edu";
-	$username = "cs4750jgd3hb";
-	$password = "p@ssw0rd";
+	$username = "cs4750jgd3hbd";
+	$password = "spring2016";
 	$database = "cs4750jgd3hb";
 
 	 // Create connection
@@ -87,7 +87,7 @@
 
     //This SQL query is used to pull up the restaurant menu
 
-    $MenuQuery = mysqli_query($conn, "SELECT food_name FROM Menu NATURAL JOIN Food WHERE restaurantID = '$restaurantID'")
+    $MenuQuery = mysqli_query($conn, "SELECT food_name, foodID FROM Menu NATURAL JOIN Food WHERE restaurantID = '$restaurantID'")
 
 ?>
 <!DOCTYPE html>
@@ -181,7 +181,7 @@
 
 							while ($temp = mysqli_fetch_assoc($FoodQuery))
 							{ 
-								echo "<option value=\"" . $temp['foodID'] . "\">" . $temp['food_name'] . "</option>"; 
+								echo "<option value=\"" . $temp['foodID'] . "\">" . $temp['food_name'] . "</option>";
 							}
 
 							echo "</select>"; 
