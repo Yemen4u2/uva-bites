@@ -138,7 +138,7 @@
 		//Add dining options to database
 
 		$addDiningOptions = "INSERT INTO Dining (restaurantID, sitin, delivery, carryout, reservation)
-							VALUES ('$restaurantID', '$sitIn', '$delivery', '$carryout', '$carryout', '$reservation')";
+							VALUES ('$restaurantID', '$sitIn', '$delivery', '$carryout', '$reservation')";
 		mysqli_query($db, $addDiningOptions);
 
 		//Add location information to database

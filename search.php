@@ -594,7 +594,7 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li><a href="#" class="button">Sign Up</a></li>
+							<li><a href="signUp.html" class="button">Sign Up</a></li>
 						</ul>
 					</nav>
 				</header>
