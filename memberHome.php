@@ -10,7 +10,7 @@
 	//Setting up Connection to the database.
 
 	$servername = "stardock.cs.virginia.edu";
-	$username = "cs4750jgd3hbd";
+	$username = "cs4750jgd3hbc";
 	$password = "spring2016";
 	$database = "cs4750jgd3hb";
 

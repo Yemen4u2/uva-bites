@@ -4,8 +4,8 @@
       }
 
       $servername = "stardock.cs.virginia.edu";
-      $username = "cs4750jgd3hb";
-      $password = "p@ssw0rd";
+      $username = "cs4750jgd3hbc";
+      $password = "spring2016";
       $database = "cs4750jgd3hb";
 
       // Create connection
@@ -25,7 +25,8 @@
 
       if(isSet($_GET["restaurantName"]) && $_GET["restaurantName"] != "")
       {
-      	$restaurantName = InputCleaner($_GET["restaurantName"]);
+      	$sanatizedRestaurantName = InputCleaner($_GET["restaurantName"]);
+            $restaurantName = ('%' . $sanatizedRestaurantName . '%');
       }
       if (isSet($_GET["foodName"]) && $_GET["foodName"] != "")
       {
@@ -56,8 +57,10 @@
 		//remove space bfore and after
 		$data = trim($data); 
 		//remove slashes
-		$data = stripslashes($data); 
+		$data = stripslashes($data);
+            //removes tags and remove or encode special characters from a string. 
 		$data=(filter_var($data, FILTER_SANITIZE_STRING));
+
 		return $data;
 	}
 
@@ -66,6 +69,7 @@
 
     if (isSet($restaurantName)) 
     {
+
       	//Check if the zip code has been inputed
 
       	if (isSet($zipCode))
@@ -78,7 +82,7 @@
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& $diningOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption) && isSet($parkingOption))
@@ -86,7 +90,7 @@
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Dining
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption) && isSet($rating))
@@ -94,7 +98,7 @@
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption))
@@ -102,28 +106,28 @@
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Dining
-	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && $diningOption = '1'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && zip = '$zipCode' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking
-	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && $parkingOption = '1'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && zip = '$zipCode' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && numberOfStars >= $rating");
+	      		WHERE restaurant_name LIKE '$restaurantName' && zip = '$zipCode' && numberOfStars >= $rating");
       		}
       		else
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location
-	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && zip = '$zipCode'");
       		}
       	}
 
@@ -131,62 +135,64 @@
 
       	else
       	{
+
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && $diningOption = '1' 
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && $diningOption = '1' 
 	      		      && numberOfStars >= $rating");
       		}
-      		elseif (isSet($diningOption) && isSet($parkingOption))
+      		else if (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Dining
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && $diningOption = '1'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && $diningOption = '1'");
       		}
-      		elseif (isSet($parkingOption) && isSet($rating))
+      		else if (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && numberOfStars >= $rating");
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1' && numberOfStars >= $rating");
       		}
-      		elseif (isSet($diningOption))
+      		else if (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Dining
-	      		WHERE restaurant_name = '$restaurantName' && $diningOption = '1'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && $diningOption = '1'");
       		}
-      		elseif (isSet($parkingOption))
+      		else if (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking
-	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1'");
+	      		WHERE restaurant_name LIKE '$restaurantName' && $parkingOption = '1'");
       		}
-      		elseif (isSet($rating))
+      		else if (isSet($rating))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Rating
-	      		WHERE restaurant_name = '$restaurantName' && numberOfStars >= $rating");
+	      		WHERE restaurant_name LIKE '$restaurantName' && numberOfStars >= $rating");
       		}
       		else
-      		{
-      			$result = mysqli_query($conn, 
+      		{	
+                        $result = mysqli_query($conn, 
 		      	"SELECT restaurantID,restaurant_name, cusine, wait_time
 		      	FROM Restaurant
-		      	WHERE restaurant_name = '$restaurantName'");
+		      	WHERE restaurant_name LIKE '$restaurantName'");
       		}
+                  
       	}  	
     }
 
     //Check if just a food name has been set
 
-    elseif (isSet($foodName))
+    else if (isSet($foodName))
     {
       	if (isSet($zipCode))
       	{
@@ -302,7 +308,7 @@
 
       //Check if just a zip code has been set
 
-    elseif (isSet($zipCode))
+    else if (isSet($zipCode))
     {
       	if (isSet($foodName))
       	{
@@ -619,10 +625,21 @@
 							    $output = "<b> Resturant Name: </b> $restaurant_name <br /> <b> Cusine: </b> $cusine <br /> <b> Average Wait Time: </b> $wait_time Minutes";
 							    echo "<div class=\"box\">$output";
                                               echo "<br/><br/>";
-                                              echo "<div id='menuInfo_" . $restaurantID . "'><input id='menuButton' type='button' value='Menu' onclick='processData(\"menu\", \"$restaurantID\")'/></div>";
+          
+                                          echo 
+                                          "<div id='menuInfo_" . $restaurantID . "'>
+                                          <input id='menuButton' type='button' value='Menu' onclick='processData(\"menu\", \"$restaurantID\")'/>
+                                          </div>";
+
                                               echo "<br/>";
-                                              echo "<div id='contactInfo_" . $restaurantID . "'><input id='contactButton' type='button' value='Contact' onclick='processData(\"contact\", \"$restaurantID\")'/></div><br/>";
+
+                                          echo 
+                                          "<div id='contactInfo_" . $restaurantID . "'>
+                                          <input id='contactButton' type='button' value='Contact' onclick='processData(\"contact\", \"$restaurantID\")'/>
+                                          </div>";
+      
                                               echo "</div>";
+
                                               $file_contents = $file_contents . "Restaurant Name: " . json_encode($restaurant_name) ."\n" . "Cuisine: " . json_encode($cusine) . "\n" . "Wait Time: ". json_encode($wait_time);
                                               fwrite($fp, json_encode($restaurant_name) . "\n");
                                               fwrite($fp, json_encode($cusine) . "\n");
@@ -634,9 +651,15 @@
 
 					?>
 
-                              <a href="export.json" download>
+<!--                               <a href="export.json" download>
                               <button type="submit">Export as JSON file</button>
-                              </a>
+                              </a> -->
+                              <center>
+                              <ul class="actions">
+                                    <li><a href="export.json" class="button special" download>Download Results</a></li>
+                              </ul>
+                              </center>
+
 				</section>
 
 			<!-- Footer -->

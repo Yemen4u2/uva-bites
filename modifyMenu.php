@@ -1,7 +1,7 @@
 <?php
 
-	$restaurantID = $_POST['restaurantID'];
-	$foodItem =  $_POST['Food'];
+	$restaurantID = rtrim(strip_tags($_POST['restaurantID']));
+	$foodItem =  rtrim(strip_tags($_POST['Food']));
 
 	//Setting up Connection to the database.
 
