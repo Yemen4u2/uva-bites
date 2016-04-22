@@ -1,4 +1,7 @@
-<?php
+<?php   
+      if(!isset($_SESSION)){ 
+        session_start();
+      }
 
       $servername = "stardock.cs.virginia.edu";
       $username = "cs4750jgd3hb";
@@ -73,7 +76,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& $diningOption = '1' && numberOfStars >= $rating");
@@ -81,7 +84,7 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Dining
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& $diningOption = '1'");
@@ -89,7 +92,7 @@
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && zip = '$zipCode' 
 	      		&& numberOfStars >= $rating");
@@ -97,28 +100,28 @@
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Dining
 	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking
 	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode' && numberOfStars >= $rating");
       		}
       		else
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Location
 	      		WHERE restaurant_name = '$restaurantName' && zip = '$zipCode'");
       		}
@@ -131,7 +134,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && $diningOption = '1' 
 	      		      && numberOfStars >= $rating");
@@ -139,42 +142,42 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Dining
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Dining
 	      		WHERE restaurant_name = '$restaurantName' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Parking
 	      		WHERE restaurant_name = '$restaurantName' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Restaurant NATURAL JOIN Rating
 	      		WHERE restaurant_name = '$restaurantName' && numberOfStars >= $rating");
       		}
       		else
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID,restaurant_name, cusine, wait_time
 		      	FROM Restaurant
 		      	WHERE restaurant_name = '$restaurantName'");
       		}
@@ -190,7 +193,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && $diningOption = '1' 
@@ -199,7 +202,7 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Dining
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && $diningOption = '1'");
@@ -207,7 +210,7 @@
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && numberOfStars >= $rating");
@@ -215,28 +218,28 @@
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Dining
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Parking
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && numberOfStars >= $rating");
       		}
       		else
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 		      	 WHERE food_name = '$foodName' && zip = $zipCode");
       		}
@@ -246,7 +249,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant
 	      		NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && $parkingOption = '1' && $diningOption = '1' 
@@ -255,42 +258,42 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Parking NATURAL JOIN Dining
 	      		WHERE food_name = '$foodName' && $parkingOption = '1' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Parking NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && $parkingOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Dining
 	      		WHERE food_name = '$foodName' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Parking
 	      		WHERE food_name = '$foodName' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
-	      		"SELECT restaurant_name, cusine, wait_time
+	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Rating
 	      		WHERE food_name = '$foodName' && numberOfStars >= $rating");
       		}
       		else
       		{
 	      		$result = mysqli_query($conn, 
-			    "SELECT restaurant_name, cusine, wait_time
+			    "SELECT restaurantID, restaurant_name, cusine, wait_time
 			    FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant
 			    WHERE food_name = '$foodName'");
 	      	}
@@ -306,7 +309,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Parking NATURAL JOIN Rating NATURAL JOIN Dining
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -315,7 +318,7 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Parking NATURAL JOIN Dining
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -324,7 +327,7 @@
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Parking NATURAL JOIN Rating
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -333,7 +336,7 @@
       		elseif (isSet($rating) && isSet($diningOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Rating NATURAL JOIN Dining
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -342,7 +345,7 @@
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Dining
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -351,7 +354,7 @@
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Parking
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -360,7 +363,7 @@
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location 
 		      	 NATURAL JOIN Rating
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'
@@ -369,7 +372,7 @@
       		else
       		{
 	      		$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 		      	 WHERE food_name = '$foodName' && zip = '$zipCode'");
       		}
@@ -379,7 +382,7 @@
       		if (isSet($diningOption) && isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Rating
 		      	 NATURAL JOIN Dining
 		      	 WHERE zip = '$zipCode' && $parkingOption = '1' && $diningOption = '1' && numberOfStars >= $rating");
@@ -387,49 +390,49 @@
       		elseif (isSet($diningOption) && isSet($parkingOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Dining
 		      	 WHERE zip = '$zipCode' && $parkingOption = '1' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking NATURAL JOIN Rating
 		      	 WHERE zip = '$zipCode' && $parkingOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($rating) && isSet($diningOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Dining NATURAL JOIN Rating
 		      	 WHERE zip = '$zipCode' && $diningOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Dining
 		      	 WHERE zip = '$zipCode' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Parking
 		      	 WHERE zip = '$zipCode' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location NATURAL JOIN Rating
 		      	 WHERE zip = '$zipCode' && numberOfStars >= $rating");
       		}
       		else
       		{
 	      		$result = mysqli_query($conn, 
-		      	"SELECT restaurant_name, cusine, wait_time
+		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Restaurant NATURAL JOIN Location
 		      	 WHERE zip = '$zipCode'");
       		}
@@ -445,6 +448,136 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+            <script type="text/javascript" language="javascript">
+                  function processData(buttonChoice, restaurantID) { //choice = button user pushed
+                        var httpRequest;
+
+                        if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                            httpRequest = new XMLHttpRequest();
+                            if (httpRequest.overrideMimeType) {
+                                httpRequest.overrideMimeType('text/xml');
+                            }
+                        }
+                        else if (window.ActiveXObject) { // Older versions of IE
+                            try {
+                                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                                }
+                            catch (e) {
+                                try {
+                                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                                }
+                                catch (e) {}
+                            }
+                        }
+                        if (!httpRequest) {
+                            alert('Giving up :( Cannot create an XMLHTTP instance');
+                            return false;
+                        }
+
+                        if(buttonChoice == "menu") {
+                              httpRequest.open("POST", "displayMenu.php", true);
+                              httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                              httpRequest.send("restaurantID="+restaurantID);
+                        } 
+                        
+                        if(buttonChoice == "contact") {
+                              httpRequest.open("POST", "displayContact.php", true);
+                              httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                              httpRequest.send("restaurantID="+restaurantID);
+                        } 
+
+                        httpRequest.onreadystatechange = function() { 
+                              if(buttonChoice == "menu") {
+                                    displayMenu(httpRequest);
+                              } else if(buttonChoice == "contact") {
+                                    displayContact(httpRequest);
+                              }
+                        };
+                  }
+
+                  function displayMenu(httpRequest) {
+                        if(httpRequest.readyState === 4 && httpRequest.status === 200) {
+                              var data = httpRequest.responseText;
+                              var restaurantID = JSON.parse(data).restaurantID;
+                              var contents = JSON.parse(data).contents; //array that holds menu contents
+                              
+                              var mInfo = document.getElementById('menuInfo_'+restaurantID);
+                              if(mInfo != null) {
+                                    mInfo.innerHTML = ''; //empty table
+                              }
+
+                              //create new table
+                              var theTable = document.createElement('table');
+                              theTable.setAttribute('id','menuTable');
+                              theTable.border = 1;
+                              theTable.align = 'center';
+                              mInfo.appendChild(theTable);
+
+                              for (var i = 0; i < contents.length; i++) {
+                                    if(i == 0) { //1st row - column headings
+                                          var hrow = theTable.insertRow();
+                                          hrow.align = 'center';
+                                          var cell = hrow.insertCell(0);
+                                          var cellContents = document.createTextNode("Menu");
+                                          cell.style.fontWeight = "bold";
+                                          cell.style.textAlign = "center";
+                                          cell.appendChild(cellContents);
+                                          hrow = theTable.insertRow();
+                                          hrow.align = 'center';
+                                          cell = hrow.insertCell(0);
+                                          cellContents = document.createTextNode("Food Name");
+                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(1);
+                                          cellContents = document.createTextNode("Calories");
+                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(2);
+                                          cellContents = document.createTextNode("Gluten");
+                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(3);
+                                          cellContents = document.createTextNode("Dairy");
+                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(4);
+                                          cellContents = document.createTextNode("Vegan");
+                                          cell.appendChild(cellContents);
+                                    } else {
+                                          var hrow = theTable.insertRow();
+                                          hrow.align = 'center';
+                                          //1st column - foodName
+                                          var cell = hrow.insertCell(0);
+                                          var cellContents = document.createTextNode(contents[i]["foodName"]);
+                                          cell.appendChild(cellContents);
+                                          //2nd column - calories
+                                          var cell = hrow.insertCell(1);
+                                          var cellContents = document.createTextNode(contents[i]["calories"]);
+                                          cell.appendChild(cellContents);
+                                          //3rd column - gluten
+                                          var cell = hrow.insertCell(2);
+                                          var cellContents = document.createTextNode(contents[i]["gluten"]);
+                                          cell.appendChild(cellContents);
+                                          //4th column - dairy
+                                          var cell = hrow.insertCell(3);
+                                          var cellContents = document.createTextNode(contents[i]["dairy"]);
+                                          cell.appendChild(cellContents);
+                                          //5th column - vegan
+                                          var cell = hrow.insertCell(4);
+                                          var cellContents = document.createTextNode(contents[i]["vegan"]);
+                                          cell.appendChild(cellContents);
+                                    }
+                              }
+                        }
+                  }
+
+                  function displayContact(httpRequest) {
+                        if(httpRequest.readyState === 4 && httpRequest.status === 200) {
+                              var data = httpRequest.responseText;
+                              var restaurantID = JSON.parse(data).restaurantID;
+                              var phone = JSON.parse(data).phone;
+                              var email = JSON.parse(data).email;
+                              var cInfo = document.getElementById('contactInfo_'+restaurantID);
+                              cInfo.innerHTML = "<b>Contact Info:</b><br/><b>Phone: </b>"+phone+"<br/> <b>Email: </b>"+email;
+                        }
+                  }
+            </script>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -468,7 +601,7 @@
 					</header>
 
 					<?php
-
+                                  $file_contents = '';
 					    $row_cnt = $result->num_rows;
       
 					    if($row_cnt == 0) 
@@ -477,16 +610,33 @@
 					    }
 					    else
 					    {
+                                          $fp = fopen('export.json', 'w');
 							while ($row = mysqli_fetch_array($result)) :
+                                              $restaurantID = $row['restaurantID'];
 							    $restaurant_name = $row['restaurant_name'];
 							    $cusine = $row['cusine'];
 							    $wait_time = $row['wait_time'];
 							    $output = "<b> Resturant Name: </b> $restaurant_name <br /> <b> Cusine: </b> $cusine <br /> <b> Average Wait Time: </b> $wait_time Minutes";
-							    echo "<div class=\"box\">$output</div>";
+							    echo "<div class=\"box\">$output";
+                                              echo "<br/><br/>";
+                                              echo "<div id='menuInfo_" . $restaurantID . "'><input id='menuButton' type='button' value='Menu' onclick='processData(\"menu\", \"$restaurantID\")'/></div>";
+                                              echo "<br/>";
+                                              echo "<div id='contactInfo_" . $restaurantID . "'><input id='contactButton' type='button' value='Contact' onclick='processData(\"contact\", \"$restaurantID\")'/></div><br/>";
+                                              echo "</div>";
+                                              $file_contents = $file_contents . "Restaurant Name: " . json_encode($restaurant_name) ."\n" . "Cuisine: " . json_encode($cusine) . "\n" . "Wait Time: ". json_encode($wait_time);
+                                              fwrite($fp, json_encode($restaurant_name) . "\n");
+                                              fwrite($fp, json_encode($cusine) . "\n");
+                                              fwrite($fp, json_encode($wait_time) . "\n");
+                                              fwrite($fp, "\n");
 							endwhile;
+                                          fclose($fp);
 						}
+
 					?>
 
+                              <a href="export.json" download>
+                              <button type="submit">Export as JSON file</button>
+                              </a>
 				</section>
 
 			<!-- Footer -->
