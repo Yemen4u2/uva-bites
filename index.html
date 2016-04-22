@@ -33,7 +33,7 @@
 					<p>Basically Yelp for UVA.</p>
 					<ul class="actions">
 						<li><a href="customer.html" class="button special">Customer</a></li>
-						<li><a href="memberHome.php" class="button">Resturant</a></li>
+						<li><a href="memberHome.php" class="button special">Restaurant</a></li>
 					</ul>
 				</section>
 
@@ -108,37 +108,56 @@
 				</section>
 			-->
 			<!-- CTA -->
-			<!--
-				<section id="cta">
+			
+			<section id="container">
 
-					<h2>Sign up for beta access</h2>
-					<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
+				<section class="box special">
 
-					<form>
+					<h2>Quick Lookups</h2>
+					<p>Chose from one of the following for a quick look up.</p>
+
+					<form action="quickLookUp.php" method="GET">
 						<div class="row uniform 50%">
-							<div class="8u 12u(mobilep)">
-								<input type="email" name="email" id="email" placeholder="Email Address" />
+							<div class="4u 12u(mobilep)">
+								<input name="allAmericanRestaurants" type="submit" value="American Restaurants" class="fit" />
 							</div>
 							<div class="4u 12u(mobilep)">
-								<input type="submit" value="Sign Up" class="fit" />
+								<input name="allChineseRestaurants" type="submit" value="Chinese Restaurants" class="fit" />
 							</div>
+							<div class="4u 12u(mobilep)">
+								<input name="allFrenchRestaurants" type="submit" value="French Restaurants" class="fit" />
+							</div>
+							<div class="4u 12u(mobilep)">
+								<input name="allVegetarianRestaurants" type="submit" value="Vegetarian Options" class="fit" />
+							</div>
+							<div class="4u 12u(mobilep)">
+								<input name="allDairyFreeRestaurants" type="submit" value="Dairy Free Options" class="fit" />
+							</div>
+							<div class="4u 6u(narrower) 12u$(mobilep)">
+								<ul class="actions fit">
+									<li><a href="https://www.youtube.com/watch?v=EXON21V0v4o" class="button fit">Gluten Free</a></li>
+								</ul>
+							</div>
+
 						</div>
 					</form>
 
 				</section>
-			-->
+
+			</section>
+			
 			<!-- Footer -->
 				<footer id="footer">
-					<ul class="icons">
+<!-- 					<ul class="icons">
 						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
 						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
 						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
+					</ul> -->
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: Thunder Squad</li>
 					</ul>
 				</footer>
 

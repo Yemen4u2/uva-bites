@@ -107,14 +107,17 @@
 	</head>
 	<body>
 		<div id="page-wrapper">
-			<header id="header" class="alt">
-				<h1><a href="index.html">UVaBites</a> by Thunder Squad</h1>
+
+			<header id="header">
+				<h1><a href="index.html">UVA Bites</a> by Thunder Squad</h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
+						<li><a href="signOut.php" class="button special">Sign Out</a></li>
 					</ul>
-				</nav>		
+				</nav>
 			</header>
+
 		</div>
 
 		<section id="main" class="container 75%">
@@ -128,15 +131,6 @@
 						<?php
 						  	echo "$RestaurantOutput";
 						?>
-<!-- 						<div class="row uniform">
-							<div class="12u\">
-							<form>
-								<ul class="actions">
-								<li><input type="submit" value="Update Restaurant Information" /></li>
-								</ul>
-							</form>
-							</div>
-						</div> -->
 						</div>
 						<h2>Contact Information</h2>
 						<div class="box">
