@@ -49,6 +49,13 @@
       	$rating = InputCleaner($_GET["rating"]);
       }
 
+      //Check to make sure that at least one of the first three criteria were inputed
+
+      if (!isSet($restaurantName) && !isSet($foodName) && !isSet($zipCode))
+      {
+            header("Location: http://localhost/uva-bites/customer.html");
+      }
+
 
     //This is the function used to SANITIZE the values that are inputed.
 
