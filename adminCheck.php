@@ -9,7 +9,7 @@
 	//connect to MySQL DB
 	$servername = "stardock.cs.virginia.edu";
     $username = "cs4750jgd3hba";
-    $password = "spring2016";
+    $password = "iamnotAdmin";
     $database = "cs4750jgd3hb";
 
     // Create connection

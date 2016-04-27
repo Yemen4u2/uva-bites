@@ -7,7 +7,7 @@
 
 	$servername = "stardock.cs.virginia.edu";
 	$username = "cs4750jgd3hbb";
-	$password = "spring2016";
+	$password = "changeMenu";
 	$database = "cs4750jgd3hb";
 
 	// Create connection
