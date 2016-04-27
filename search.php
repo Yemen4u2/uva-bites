@@ -209,7 +209,7 @@
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Dining NATURAL JOIN Rating
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && $diningOption = '1' 
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && $parkingOption = '1' && $diningOption = '1' 
 	      		      && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption) && isSet($parkingOption))
@@ -218,7 +218,7 @@
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Dining
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && $diningOption = '1'");
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && $parkingOption = '1' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption) && isSet($rating))
       		{
@@ -226,35 +226,35 @@
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
 	      		NATURAL JOIN Parking NATURAL JOIN Rating
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1' && numberOfStars >= $rating");
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && $parkingOption = '1' && numberOfStars >= $rating");
       		}
       		elseif (isSet($diningOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Dining
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $diningOption = '1'");
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && $diningOption = '1'");
       		}
       		elseif (isSet($parkingOption))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Parking
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && $parkingOption = '1'");
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && $parkingOption = '1'");
       		}
       		elseif (isSet($rating))
       		{
       			$result = mysqli_query($conn,
 	      		"SELECT restaurantID, restaurant_name, cusine, wait_time
 	      		FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location NATURAL JOIN Rating
-	      		WHERE food_name = '$foodName' && $zipCode = 'zip' && numberOfStars >= $rating");
+	      		WHERE food_name = '$foodName' && zip = '$zipCode' && numberOfStars >= $rating");
       		}
       		else
       		{
       			$result = mysqli_query($conn, 
 		      	"SELECT restaurantID, restaurant_name, cusine, wait_time
 		      	 FROM Food NATURAL JOIN Menu NATURAL JOIN Restaurant NATURAL JOIN Location
-		      	 WHERE food_name = '$foodName' && zip = $zipCode");
+		      	 WHERE food_name = '$foodName' && zip = '$zipCode'");
       		}
       	}
       	else
