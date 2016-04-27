@@ -163,6 +163,7 @@
 	}
 	else
 	{
-		echo "You are already registered. Please login in.";
+		echo "Your account already exists";
+		header("Location: http://localhost/uva-bites/adminLogin.html");
 	}
 ?>

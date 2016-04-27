@@ -4,7 +4,7 @@
 	//connect to MySQL DB
 	$servername = "stardock.cs.virginia.edu";
     $username = "cs4750jgd3hbc";
-    $password = "changeMenu";
+    $password = "youCanOnlySee";
     $database = "cs4750jgd3hb";
 
     // Create connection

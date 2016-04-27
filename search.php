@@ -632,7 +632,6 @@
 					</header>
 
 					<?php
-                                  $file_contents = '';
 					    $row_cnt = $result->num_rows;
       
 					    if($row_cnt == 0) 
@@ -664,11 +663,9 @@
                                           </div>";
       
                                               echo "</div>";
-
-                                              $file_contents = $file_contents . "Restaurant Name: " . json_encode($restaurant_name) ."\n" . "Cuisine: " . json_encode($cusine) . "\n" . "Wait Time: ". json_encode($wait_time);
-                                              fwrite($fp, json_encode($restaurant_name) . "\n");
-                                              fwrite($fp, json_encode($cusine) . "\n");
-                                              fwrite($fp, json_encode($wait_time) . "\n");
+                                              fwrite($fp, "Restaurant Name: " . json_encode($restaurant_name) . "\n");
+                                              fwrite($fp, "Cuisine: " . json_encode($cusine) . "\n");
+                                              fwrite($fp, "Wait Time: ". json_encode($wait_time) . "\n");
                                               fwrite($fp, "\n");
 							endwhile;
                                           fclose($fp);
