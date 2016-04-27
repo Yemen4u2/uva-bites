@@ -461,7 +461,6 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-<<<<<<< HEAD
             <script type="text/javascript" language="javascript">
                   function processData(buttonChoice, restaurantID) { //choice = button user pushed
                         var httpRequest;
@@ -610,9 +609,6 @@
                         }
                   }
             </script>
-=======
-            
->>>>>>> refs/remotes/origin/jason
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -632,7 +628,7 @@
 				<section id="main" class="container 75%">
 
 					<header>
-						<h2>Here Are Some Places You Might Like To Try</h2>
+						<h2>Here Are Some Places You'd Like To Eat</h2>
 					</header>
 
 					<?php
@@ -645,10 +641,6 @@
 					    }
 					    else
 					    {
-<<<<<<< HEAD
-=======
-                                          
->>>>>>> refs/remotes/origin/jason
                                           $fp = fopen('export.json', 'w');
 							while ($row = mysqli_fetch_array($result)) :
                                               $restaurantID = $row['restaurantID'];
@@ -656,7 +648,6 @@
 							    $cusine = $row['cusine'];
 							    $wait_time = $row['wait_time'];
 							    $output = "<b> Resturant Name: </b> $restaurant_name <br /> <b> Cusine: </b> $cusine <br /> <b> Average Wait Time: </b> $wait_time Minutes";
-<<<<<<< HEAD
 							    echo "<div class=\"box\">$output";
                                               echo "<br/><br/>";
           
@@ -681,23 +672,9 @@
                                               fwrite($fp, "\n");
 							endwhile;
                                           fclose($fp);
-=======
-							    echo "<div class=\"box\">$output</div>";
-                                              $file_contents = $file_contents . "Restaurant Name: " . json_encode($restaurant_name) . "\n" . "Cuisine: " . json_encode($cusine) . "\n" . "Wait Time: " . json_encode($wait_time);
-                                              fwrite($fp, json_encode($restaurant_name) . "\n");
-                                              fwrite($fp, json_encode($cusine) . "\n");
-                                              fwrite($fp, json_encode($wait_time) . "\n");   
-                                              fwrite($fp, "\n");  
-                                          endwhile;
-                                          #fclose($fp);
->>>>>>> refs/remotes/origin/jason
 						}
 
 					?>
-                              <a href="export.json" download>
-                              <button type="submit">Export as JSON file</button>
-                              </a>
-
 
 <!--                               <a href="export.json" download>
                               <button type="submit">Export as JSON file</button>
