@@ -445,6 +445,7 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+            
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -464,11 +465,11 @@
 				<section id="main" class="container 75%">
 
 					<header>
-						<h2>Here Are Some Places You'd Like To Eat</h2>
+						<h2>Here Are Some Places You Might Like To Try</h2>
 					</header>
 
 					<?php
-
+                                  $file_contents = '';
 					    $row_cnt = $result->num_rows;
       
 					    if($row_cnt == 0) 
@@ -477,15 +478,27 @@
 					    }
 					    else
 					    {
+                                          
+                                          $fp = fopen('export.json', 'w');
 							while ($row = mysqli_fetch_array($result)) :
 							    $restaurant_name = $row['restaurant_name'];
 							    $cusine = $row['cusine'];
 							    $wait_time = $row['wait_time'];
 							    $output = "<b> Resturant Name: </b> $restaurant_name <br /> <b> Cusine: </b> $cusine <br /> <b> Average Wait Time: </b> $wait_time Minutes";
 							    echo "<div class=\"box\">$output</div>";
-							endwhile;
+                                              $file_contents = $file_contents . "Restaurant Name: " . json_encode($restaurant_name) . "\n" . "Cuisine: " . json_encode($cusine) . "\n" . "Wait Time: " . json_encode($wait_time);
+                                              fwrite($fp, json_encode($restaurant_name) . "\n");
+                                              fwrite($fp, json_encode($cusine) . "\n");
+                                              fwrite($fp, json_encode($wait_time) . "\n");   
+                                              fwrite($fp, "\n");  
+                                          endwhile;
+                                          #fclose($fp);
 						}
 					?>
+                              <a href="export.json" download>
+                              <button type="submit">Export as JSON file</button>
+                              </a>
+
 
 				</section>
 
