@@ -553,21 +553,39 @@
                                           var cellContents = document.createTextNode(contents[i]["foodName"]);
                                           cell.appendChild(cellContents);
                                           //2nd column - calories
-                                          var cell = hrow.insertCell(1);
+                                          cell = hrow.insertCell(1);
                                           var cellContents = document.createTextNode(contents[i]["calories"]);
                                           cell.appendChild(cellContents);
                                           //3rd column - gluten
-                                          var cell = hrow.insertCell(2);
-                                          var cellContents = document.createTextNode(contents[i]["gluten"]);
-                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(2);
+                                          var gluten = contents[i]["gluten"];
+                                          if(gluten == 0) {
+                                                var no = document.createTextNode("No");
+                                                cell.appendChild(no);
+                                          } else if(gluten == 1) {
+                                                var yes = document.createTextNode("Yes");
+                                                cell.appendChild(yes);
+                                          }
                                           //4th column - dairy
-                                          var cell = hrow.insertCell(3);
-                                          var cellContents = document.createTextNode(contents[i]["dairy"]);
-                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(3);
+                                          var dairy = contents[i]["dairy"];
+                                          if(dairy == 0) {
+                                                var no = document.createTextNode("No");
+                                                cell.appendChild(no);
+                                          } else if(dairy == 1) {
+                                                var yes = document.createTextNode("Yes");
+                                                cell.appendChild(yes);
+                                          }
                                           //5th column - vegan
-                                          var cell = hrow.insertCell(4);
-                                          var cellContents = document.createTextNode(contents[i]["vegan"]);
-                                          cell.appendChild(cellContents);
+                                          cell = hrow.insertCell(4);
+                                          var vegan = contents[i]["vegan"];
+                                          if(vegan == 0) {
+                                                var no = document.createTextNode("No");
+                                                cell.appendChild(no);
+                                          } else if(vegan == 1) {
+                                                var yes = document.createTextNode("Yes");
+                                                cell.appendChild(yes);
+                                          }
                                     }
                               }
                         }
